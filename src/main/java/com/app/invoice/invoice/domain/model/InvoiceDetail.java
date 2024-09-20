@@ -1,4 +1,4 @@
-package com.app.invoice.domain.model;
+package com.app.invoice.invoice.domain.model;
 
 import lombok.Data;
 

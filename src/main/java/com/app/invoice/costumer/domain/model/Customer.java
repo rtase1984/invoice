@@ -1,4 +1,4 @@
-package com.app.invoice.domain.model;
+package com.app.invoice.costumer.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

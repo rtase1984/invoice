@@ -1,4 +1,6 @@
-package com.app.invoice.domain.model;
+package com.app.invoice.invoice.domain.model;
+
+import java.util.List;
 
 import lombok.Data;
 
@@ -11,5 +13,7 @@ public class Invoice {
     private String totalAmount;
     private String paymentStatus;
     private String qrCode;
+    private String Customer;
+    private List<InvoiceDetail> invoiceDetails;
 
 }

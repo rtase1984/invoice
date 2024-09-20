@@ -24,4 +24,4 @@ logging:
   level:
     root: INFO
     org.springframework.web: DEBUG
-    com.crja.tasks_mngr_api: DEBUG
+    com.app.invoice: DEBUG
