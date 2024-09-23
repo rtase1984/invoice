@@ -5,16 +5,19 @@ import java.util.Optional;
 
 import com.app.invoice.invoice.domain.model.Invoice;
 import com.app.invoice.invoice.domain.model.InvoiceDetail;
-import com.app.invoice.invoice.domain.port.in.InvoiceDetailUseCases;
 import com.app.invoice.invoice.domain.port.in.InvoiceUseCases;
 
 public class InvoiceService implements InvoiceUseCases{
 
-    private final InvoiceDetailUseCases invoiceDetailUseCases;
+    private final InvoiceUseCases invoiceUseCases;
+
+    public  InvoiceService(InvoiceUseCases invoiceUseCases) {
+        this.invoiceUseCases = invoiceUseCases;
+    }
 
     @Override
     public Invoice createInvoice(Invoice invoice) {
-        return  invoiceDetailUseCases.createInvoice(invoice);
+        return  invoiceUseCases.createInvoice(invoice);
     }
 
     @Override

@@ -13,5 +13,4 @@ public interface InvoiceUseCases {
     Optional<Invoice> getInvoiceById(Long idInvoice);
     List<Invoice> getAllInvoices();
     List<InvoiceDetail> getInvoiceDetails();
-
 }

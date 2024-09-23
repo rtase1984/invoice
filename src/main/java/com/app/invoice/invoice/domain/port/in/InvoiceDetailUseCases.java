@@ -3,6 +3,7 @@ package com.app.invoice.invoice.domain.port.in;
 import java.util.List;
 import java.util.Optional;
 
+
 import com.app.invoice.invoice.domain.model.InvoiceDetail;
 
 public interface InvoiceDetailUseCases {

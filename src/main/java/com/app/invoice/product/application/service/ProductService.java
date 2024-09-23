@@ -5,18 +5,34 @@ import java.util.Optional;
 
 import com.app.invoice.product.domain.model.Product;
 import com.app.invoice.product.domain.port.in.ProductUseCases;
+import com.app.invoice.shared.qr.QRCodeGeneratorPort;
+
 
 public class ProductService implements  ProductUseCases {
 
     private final ProductUseCases productUseCases;
+    private final QRCodeGeneratorPort qrCodeGenerator; 
+    
 
-    public  ProductService(ProductUseCases productUseCases) {
+    public  ProductService(ProductUseCases productUseCases, QRCodeGeneratorPort qrCodeGenerator) {
         this.productUseCases = productUseCases;
+        this.qrCodeGenerator = qrCodeGenerator;
     }
 
     @Override
     public Product createProduct(Product product) {
-        return productUseCases.createProduct(product);
+        // Lógica para crear el producto
+        Product createdProduct = productUseCases.createProduct(product);
+        
+        // Generar el QR para el producto creado
+        String productData = "id=" + createdProduct.getId() +
+                             "&name=" + createdProduct.getName() +
+                             "&price=" + createdProduct.getUnitPrice();
+        byte[] qrCode = qrCodeGenerator.generateQRCode(productData);
+        createdProduct.setQrCodeImge(qrCode);  // Asignar el QR al producto
+        
+        return createdProduct;
+
     }
 
     @Override

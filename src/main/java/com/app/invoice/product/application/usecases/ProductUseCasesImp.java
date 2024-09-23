@@ -1,13 +1,16 @@
 package com.app.invoice.product.application.usecases;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import com.app.invoice.product.domain.model.Product;
 import com.app.invoice.product.domain.port.in.ProductUseCases;
 import com.app.invoice.product.domain.port.out.ProductRepositoryPort;
+import com.app.invoice.shared.qr.QRCodeGeneratorPort;
+import com.google.zxing.WriterException;
 
-public class ProductUseCasesImp implements  ProductUseCases {
+public class ProductUseCasesImp implements ProductUseCases{
 
     private  final ProductRepositoryPort productRepositoryPort;
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.app.invoice.invoice.domain.model.Invoice;
+import com.app.invoice.invoice.domain.model.InvoiceDetail;
 import com.app.invoice.invoice.domain.port.in.InvoiceUseCases;
 import com.app.invoice.invoice.domain.port.out.InvoiceRepositoryPort;
 
@@ -37,6 +38,12 @@ public class InvoiceUseCasesImp implements  InvoiceUseCases {
     @Override
     public List<Invoice> getAllInvoices() {
         return invoiceRepositoryPort.findAll();
+    }
+
+    @Override
+    public List<InvoiceDetail> getInvoiceDetails() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getInvoiceDetails'");
     }
 
 }

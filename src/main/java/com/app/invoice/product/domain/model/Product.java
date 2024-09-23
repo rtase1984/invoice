@@ -1,5 +1,9 @@
 package com.app.invoice.product.domain.model;
 
+import java.util.List;
+
+import com.app.invoice.invoice.domain.model.InvoiceDetail;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +18,8 @@ public class Product {
     private String description;
     private String category;
     private String image;
-    private String qrCode;
+    private String qrCodeUrl;
+    private byte[] qrCodeImge;
+    private List<InvoiceDetail> invoiceDetails;
 
 }
