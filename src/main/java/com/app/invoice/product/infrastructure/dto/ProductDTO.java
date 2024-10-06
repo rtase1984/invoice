@@ -1,17 +1,15 @@
-package com.app.invoice.product.domain.model;
-
-import java.util.List;
-
-import com.app.invoice.invoice.domain.model.InvoiceDetail;
+package com.app.invoice.product.infrastructure.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+@Getter
+@Setter
+public class ProductDTO {
     private Long id;
     private String name;
     private Double unitPrice;
@@ -20,6 +18,4 @@ public class Product {
     private String image;
     private String qrCodeUrl;
     private byte[] qrCodeImage;
-    private List<InvoiceDetail> invoiceDetails;
-
 }

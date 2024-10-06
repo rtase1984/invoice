@@ -12,6 +12,8 @@ import com.app.invoice.product.application.usecases.ProductUseCasesImp;
 import com.app.invoice.product.domain.port.out.ProductRepositoryPort;
 import com.app.invoice.product.infrastructure.repositories.ProductJpaRepository;
 import com.app.invoice.product.infrastructure.repositories.ProductRepositoryImpl;
+import com.app.invoice.shared.qr.QRCodeGeneratorPort;
+import com.app.invoice.shared.qr.QRCodeService;
 
 import jakarta.persistence.EntityManagerFactory;
 
@@ -33,9 +35,9 @@ public class ApplicationConfig {
     @Bean
     public ProductService productService(ProductRepositoryPort productRepositoryPort){
         return new ProductService(
-            new ProductUseCasesImp(productRepositoryPort));
+            new ProductUseCasesImp(productRepositoryPort), new QRCodeService()
+            );
     }
-
 
 
     @Bean

@@ -67,8 +67,7 @@ public class ProductRepositoryImpl implements ProductRepositoryPort{
 
     @Override
     public Optional<Product> findById(Long idProduct) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return  repository.findById(idProduct).map(ProductMapper.INSTANCE::toDomain);
     }
 
     @Override

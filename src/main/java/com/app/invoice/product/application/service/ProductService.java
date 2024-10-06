@@ -1,38 +1,42 @@
 package com.app.invoice.product.application.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import com.app.invoice.product.domain.model.Product;
 import com.app.invoice.product.domain.port.in.ProductUseCases;
 import com.app.invoice.shared.qr.QRCodeGeneratorPort;
+import com.google.zxing.WriterException;
 
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class ProductService implements  ProductUseCases {
 
     private final ProductUseCases productUseCases;
     private final QRCodeGeneratorPort qrCodeGenerator; 
     
 
-    public  ProductService(ProductUseCases productUseCases, QRCodeGeneratorPort qrCodeGenerator) {
-        this.productUseCases = productUseCases;
-        this.qrCodeGenerator = qrCodeGenerator;
-    }
-
     @Override
     public Product createProduct(Product product) {
-        // Lógica para crear el producto
+        String productData = "&Name=" + product.getName() + "\n" +
+                             "&Price=" + product.getUnitPrice();
+        byte[] qrCode = null;
+        try {
+            qrCode = qrCodeGenerator.generateQRCode(productData);
+        } 
+        catch (WriterException e) {
+            e.printStackTrace();
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        product.setQrCodeImage(qrCode);
         Product createdProduct = productUseCases.createProduct(product);
         
-        // Generar el QR para el producto creado
-        String productData = "id=" + createdProduct.getId() +
-                             "&name=" + createdProduct.getName() +
-                             "&price=" + createdProduct.getUnitPrice();
-        byte[] qrCode = qrCodeGenerator.generateQRCode(productData);
-        createdProduct.setQrCodeImge(qrCode);  // Asignar el QR al producto
-        
         return createdProduct;
-
     }
 
     @Override
